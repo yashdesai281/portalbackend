@@ -12,7 +12,6 @@
             <h1>File Processor</h1>
             <p>Upload your CSV or Excel file to process transaction data and contacts</p>
         </header>
-
         <div class="upload-section">
             <h2>Upload File</h2>
             <div class="upload-box" id="dropzone">
@@ -189,6 +188,12 @@
             const errorMessage = document.getElementById('errorMessage');
             const closeError = document.getElementById('closeError');
 
+               fetch('https://your-backend.onrender.com/upload', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.json())
+                  .then(data => console.log(data))
+                  .catch(err => console.error(err));
             // File Upload Handlers
             browseBtn.addEventListener('click', () => {
                 fileInput.click();
